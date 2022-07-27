@@ -1,0 +1,9 @@
+<odoo>
+    <data>
+    <menuitem
+        id="library_menu"
+        name="Libraría"
+        sequence="1"/>
+        
+    </data>
+</odoo>

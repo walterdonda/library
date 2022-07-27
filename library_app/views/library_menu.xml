@@ -1,9 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data>
+
     <menuitem
         id="library_menu"
-        name="Librería"
-        sequence="1"/>
-        
-    </data>
+        name="Libresría"
+        sequence="10"/>
+
 </odoo>

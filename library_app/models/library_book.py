@@ -19,8 +19,15 @@ class LibraryBook(models.Model):
         string='Activo?',
         default = True,
         help='Indica si el libro se encuentra en estado activo.'
-        
+        )
+    
+    
+    image = fields.Binary(
+        string='Imagen de portada',
     )
+
+    
+    
     
 
     

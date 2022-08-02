@@ -3,11 +3,10 @@
     'name': "library_app",
 
     'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
+        Resumen de la descripción""",
 
     'description': """
-        Long description of module's purpose
+        Descripción larga del módulo
     """,
 
     'author': "Walter Donda",
@@ -24,9 +23,9 @@
 
     # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
-        'security/library_security_groups.xml',
-        'views/library_menu.xml',
+         'security/library_security_groups.xml',
+         'security/ir.model.access.csv',
+         'views/library_menu.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

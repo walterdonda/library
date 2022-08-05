@@ -18,9 +18,8 @@
       <record id="book_user_rule" model="ir.rule">
           <field name="name">Acceso del grupo usuario a libros</field>
           <field name="model_id" ref="model_library_book"/>
-          <field name="domain_force">['active','=','True']</field>
+          <field name="domain_force">[('active','=','True')]</field>
           <field name="groups_id" eval="[(4, ref('libreria_user_group'))]"/>
-          
           <field name="active" eval="True" />
       </record>
       </data>

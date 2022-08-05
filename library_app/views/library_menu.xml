@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     
-    <menuitem id="library_menu" name="Library" sequence="10"/>
+  <menuitem id="menu_library" name="Library" sequence="10"/>
     
-    <record id="action_library_book" model="ir.actions.act_window">
-        <field name="type">ir.actions.act_window</field>
-        <field name="name">Library Books</field>
-        <field name="res_model">library.book</field>
-        <field name="view_mode">tree,form</field>
-        <field name="target">current</field>
-        <field name="domain">[]</field>
-        <field name="context">\{}</field>
-    </record>
     
-    <record id="menu_library_book" model="ir.ui.menu" >
-        <field name="name">Books</field>
-        <field name="sequence" eval="5" />
-        <field name="action" ref="action_library_book" />
-        <field name="parent" ref="library_menu" />
-    </record>
+    <!-- Action to open the Book list -->
 
+  <record id="action_library_book" model="ir.actions.act_window">
+
+    <field name="name">Library Books</field>
+
+    <field name="res_model">library.book</field>
+
+    <field name="view_mode">tree,form</field>
+
+  </record>
+
+  <!-- Menu item to open the Book list -->
+
+  <menuitem id="menu_library_book" name="Books" parent="menu_library" action="action_library_book"/>
+    
 </odoo>

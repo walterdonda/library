@@ -1,9 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
+    
     <menuitem
         id="library_menu"
-        name="Libresría"
+        name="Library"
         sequence="10"/>
+    
+    <record id="action_library_book" model="ir.actions.act_window">
+        <field name="type">ir.actions.act_window</field>
+        <field name="name">Library Books</field>
+        <field name="res_model">model.name</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_type">tree,form</field>
+        <field name="target">current</field>
+        <field name="domain">[]</field>
+        <field name="context">\{}</field>
+        <field name="search_view_id" ref="ir.ui.view" />
+    </record>
+    
+    <record id="menu_library_books" model="ir.ui.menu" >
+        <field name="name">Books</field>
+        <field name="sequence" eval="5" />
+        <field name="action" ref="action_library_book" />
+        <field name="parent_id" ref="library_menu" />
+    </record>
 
 </odoo>

@@ -25,6 +25,7 @@
     'data': [
          'security/library_security_groups.xml',
          'security/ir.model.access.csv',
+         'views/book_view.xml',
          'views/library_menu.xml',
     ],
     # only loaded in demonstration mode

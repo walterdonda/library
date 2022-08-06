@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    
+   <!-- Menú principal de la app--> 
   <menuitem id="menu_library" name="Librería" sequence="10"/>
     
     
-    <!-- Action to open the Book list -->
+    <!-- Acción que abre las vistas-->
 
   <record id="action_library_book" model="ir.actions.act_window">
 
@@ -16,7 +16,7 @@
 
   </record>
 
-  <!-- Menu item to open the Book list -->
+  <!-- Item de menú que llama a la acción -->
 
   <menuitem id="menu_library_book" name="Libros" parent="menu_library" action="action_library_book"/>
     

@@ -27,6 +27,20 @@ class LibraryBook(models.Model):
     )
 
     
+    publisher_id = fields.Many2one(
+        string='Editorial',
+        comodel_name='res.partner',
+    )
+
+    
+    author_ids = fields.Many2many(
+        string='Autores',
+        comodel_name='res.partner',
+    )
+    
+    
+
+    
     
     
 

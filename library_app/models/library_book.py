@@ -10,7 +10,7 @@ class LibraryBook(models.Model):
         string='ISBN',
         required=True)
     
-    date_release = fields.Date(
+    date_published = fields.Date(
         string='Fecha de publicación',
     )
 

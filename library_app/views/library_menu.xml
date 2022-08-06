@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     
-  <menuitem id="menu_library" name="Library" sequence="10"/>
+  <menuitem id="menu_library" name="Librería" sequence="10"/>
     
     
     <!-- Action to open the Book list -->
 
   <record id="action_library_book" model="ir.actions.act_window">
 
-    <field name="name">Library Books</field>
+    <field name="name">Libros de la Biblioteca</field>
 
     <field name="res_model">library.book</field>
 
@@ -18,6 +18,6 @@
 
   <!-- Menu item to open the Book list -->
 
-  <menuitem id="menu_library_book" name="Books" parent="menu_library" action="action_library_book"/>
+  <menuitem id="menu_library_book" name="Libros" parent="menu_library" action="action_library_book"/>
     
 </odoo>

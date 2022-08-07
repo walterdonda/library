@@ -14,32 +14,31 @@ class LibraryBook(models.Model):
         string='Fecha de publicación',
     )
 
-    
     active = fields.Boolean(
         string='Activo?',
         default = True,
         help='Indica si el libro se encuentra en estado activo.'
-        )
-    
+    )
     
     image = fields.Binary(
         string='Imagen de portada',
     )
-
     
     publisher_id = fields.Many2one(
         string='Editorial',
         comodel_name='res.partner',
     )
 
-    
     author_ids = fields.Many2many(
         string='Autores',
         comodel_name='res.partner',
     )
-
+    
     def button_check_isbn(self):
         pass
+
+
+    
     
     
 

@@ -6,24 +6,23 @@
       <field name="arch" type="xml">
         <form string= 'Libro'>
           <header>
-            <button name="check_isbn" string="Chequear ISBN" type="object" class="oe_highlight"/>
+            <button name="button_check_isbn" string="Chequear ISBN" type="object" class="oe_highlight"/>
           </header>
-          
           <sheet>
-            <group name= "group_top">
-            <group name= "group_left">
-              <field name="name"/>
-              <field name="author_ids" widget="many2many"/>
-              <field name="publisher_id"/>
-              <field name="date_published"/>
+            <group name="group_top">
+              <group name="group_left">
+                <field name="name"/>
+                <field name="author_ids" widget="many2many"/>
+                <field name="publisher_id"/>
+                <field name="date_published"/>
+              </group>
+              <group name="group_right">  
+                <field name="isbn"/>
+                <field name="active" widget="boolean_toggle"/>
+                <field name="image" widget='image'/>
+              </group>
             </group>
-            <group name "group_right">  
-              <field name="isbn"/>
-              <field name="active" widget="boolean_toggle"/>
-              <field name="image" widget='image'/>
-            </group>
-            </group>
-          </shhet>
+          </sheet>
         </form>
       </field>
     </record>

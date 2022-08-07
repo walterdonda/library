@@ -37,6 +37,9 @@ class LibraryBook(models.Model):
         string='Autores',
         comodel_name='res.partner',
     )
+
+    def button_check_isbn(self):
+        pass
     
     
 

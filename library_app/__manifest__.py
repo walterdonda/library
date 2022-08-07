@@ -3,7 +3,7 @@
     'name': "library_app",
 
     'summary': """
-        Resumen de la descripción""",
+        Aplicación para el manejo de libros de una biblioteca""",
 
     'description': """
         Descripción larga del módulo

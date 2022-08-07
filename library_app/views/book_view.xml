@@ -50,7 +50,7 @@
           <filter name="active_filter" string="Mostrar Activos" domain="[('active','=',True)]"/>
           <filter name="inactive_filter" string="Mostrar Inactivos" domain="[('active','=',False)]"/>
           <filter name="with_image" string="Libros con imagen" domain="[('image', '=', True)]" />
-          <filter name="today" string="Mayor que hoy" domain="[('date_published','&gt;=',context_today().strftime('%Y-%m-%d'))]"/>
+          <filter name="today" string="Solo hoy" domain="[('date_published','&gt;=',context_today().strftime('%Y-%m-%d')),('date_published','&lt;=',(context_today()+datetime.timedelta(days=1)).strftime('%Y-%m-%d'))]"/>
           <filter string="Durante este mes" name="this_month" domain="[('date_published','&gt;=',time.strftime('%%Y-%%m-01'))]"/>
           <filter string="Durante este año" name="this_year" domain="[('date_published','&gt;=',time.strftime('%%Y-01-01'))]"/> 
         </search>

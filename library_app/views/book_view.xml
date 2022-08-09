@@ -39,7 +39,7 @@
         </tree>
       </field>
     </record>
-    <!-- Vista de búsqueda -->
+    <!-- Vista de búsqueda y filtros de registros -->
     <record id="book_view_search" model="ir.ui.view">
       <field name="name">book.view.search</field>
       <field name="model">library.book</field>
@@ -49,7 +49,7 @@
           <field name="author_ids"/>
           <filter name="activos" string="Mostrar Activos" domain="[('active','=',True)]"/>
           <filter name="inactivos" string="Mostrar Inactivos" domain="[('active','=',False)]"/>
-          <filter name="con_imagen" string="Libros con imagen" domain="[('image', '=', True)]" />
+          <filter name="con_imagen" string="Libros con portada" domain="[('image', '=', True)]" />
           <filter name="today" string="Publicados hoy" domain="[('date_published','&gt;=',context_today().strftime('%Y-%m-%d')),('date_published','&lt;=',(context_today()+datetime.timedelta(days=1)).strftime('%Y-%m-%d'))]"/>
           <filter string="Publicado este mes" name="this_month" domain="[('date_published','&gt;=',time.strftime('%%Y-%%m-01'))]"/>
           <filter string="Publicados" name="published" domain="[('date_published','&gt;=',time.strftime('%%Y-01-01'))]" context="{'group_by': 'date_published'}" /> 

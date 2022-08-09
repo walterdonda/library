@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="book_list_template" name="Lista de  Libros">
+      <div id="wrap" class="container">
+      <h1>Libros de la biblioteca</h1>
+      </div>
+        
+    </template>
+
+</odoo>

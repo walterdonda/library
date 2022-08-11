@@ -1,6 +1,4 @@
-from datetime import datetime
 from odoo import fields, models
-import time
 
 
 class LibraryBook(models.Model):
@@ -38,7 +36,4 @@ class LibraryBook(models.Model):
     )
 
     def button_check_isbn(self):
-        for book in self:
-            if book.date_published:
-                book.date_published = datetime.now()
-        return True
+        pass

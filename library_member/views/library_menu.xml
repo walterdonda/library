@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Acción que abre las vistas-->
+
+  <record id="action_library_member" model="ir.actions.act_window">
+
+    <field name="name">Miembros de la Biblioteca</field>
+
+    <field name="res_model">library.member</field>
+
+    <field name="view_mode">tree,form</field>
+
+  </record>
+
+  <!-- Item de menú que llama a la acción -->
+
+  <menuitem id="menu_library_member" name="Miembros" parent="library_app.menu_library" action="action_library_member"/>
+
+</odoo>

@@ -14,8 +14,12 @@
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
+        "security/ir.model.access.csv",
         'views/book_view.xml',
+        'views/member_view.xml',
         'views/templates.xml',
+        'views/library_menu.xml',
+        
     ],
     # only loaded in demonstration mode
     'demo': [

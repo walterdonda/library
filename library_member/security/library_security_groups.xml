@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Cambio el nombre del grupo de usuario en la app library -->
+
+    <record id="library_app.library_group_user" model="res.groups">
+        <field name="name">Bibliotecario</field>
+    </record>
+
+</odoo>

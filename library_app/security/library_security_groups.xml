@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data>
-      <record id="library_group_user" model="res.groups">
-          <field name="name">Usuario</field>
-          <field name="category_id" ref= "base.module_category_services_library"></field>
-          <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
-      </record>
-      <record id="library_group_manager" model="res.groups">
-          <field name="name">Manager</field>
-          <field name="category_id" ref= "base.module_category_services_library"></field>
-          <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
-          <field name="users" eval="[(4,ref('base.user_admin'))]" />
-      </record>
-      
-    </data>
     
+    <record id="library_group_user" model="res.groups">
+      <field name="name">Usuario</field>
+      <field name="category_id" ref= "base.module_category_services_library"></field>
+      <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+    <record id="library_group_manager" model="res.groups">
+      <field name="name">Manager</field>
+      <field name="category_id" ref= "base.module_category_services_library"></field>
+      <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+      <field name="users" eval="[(4,ref('base.user_admin'))]" />
+    </record>
+
     <record id="book_user_rule" model="ir.rule">
         <field name="name">Regla de acceso libros</field>
         <field name="model_id" ref="model_library_book"/>
@@ -23,6 +22,4 @@
         <field name="perm_write" eval="True" />
         <field name="perm_unlink" eval="True" />
     </record>
-    
-      
 </odoo>

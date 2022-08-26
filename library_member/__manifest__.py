@@ -9,11 +9,11 @@
     'website': "http://www.yourcompany.com",
 
     # any module necessary for this one to work correctly
-    'depends': ['library_app'],
+    'depends': ['library_app','mail'],
 
     # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
+        "security/library_security_groups.xml",
         "security/ir.model.access.csv",
         'views/book_view.xml',
         'views/member_view.xml',

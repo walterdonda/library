@@ -4,6 +4,7 @@ from odoo import fields, models
 class LibraryBook(models.Model):
     _name = 'library.book'
     _description = 'Libro'
+    _order= 'date_published ASC, name'
 
     name = fields.Char(string='Título', required=True)
 
@@ -35,5 +36,7 @@ class LibraryBook(models.Model):
         comodel_name='res.partner',
     )
 
+    price = fields.Float(digits=(12,2), string= "Precio del libro")
+
     def button_check_isbn(self):
-        pass
+        self.active = False

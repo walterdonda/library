@@ -17,9 +17,9 @@ class Book(models.Model):
 
     # String fields:
     name = fields.Char(
-        "Title",
+        "Título",
         default=None,
-        help="Book cover title.",
+        help="Tapa del libro.",
         readonly=False,
         required=True,
         index=True,
@@ -29,50 +29,35 @@ class Book(models.Model):
     )
     isbn = fields.Char("ISBN")
     book_type = fields.Selection(
-        [("paper", "Paperback"),
-         ("hard", "Hardcover"),
-         ("electronic", "Electronic"),
-         ("other", "Other")],
-        "Type",
+        [("paper", "Tapa blanda"),
+         ("hard", "Tapa dura"),
+         ("electronic", "Electrónico"),
+         ("other", "otro")],
+        "Tipo de libro",
     )
-    notes = fields.Text("Internal Notes")
-    descr = fields.Html("Description")
+    notes = fields.Text("Nota interna")
+    descr = fields.Html("Descripción")
 
     # Numeric fields:
     copies = fields.Integer(default=1)
-    avg_rating = fields.Float("Average Rating", (3, 2))
-    price = fields.Monetary("Price", "currency_id")
+    avg_rating = fields.Float("Rating promedio", (3, 2))
+    price = fields.Monetary("Precio de venta al público", "currency_id")
     currency_id = fields.Many2one("res.currency")  # price helper
 
     # Date and time fields:
-    date_published = fields.Date()
+    date_published = fields.Date(string="Fecha de publicación")
     last_borrow_date = fields.Datetime(
-        "Last Borrowed On",
+        "Última vez que se prestó el libro",
         default=lambda self: fields.Datetime.now(),
     )
 
     # Other fields:
-    active = fields.Boolean("Active?")
-    image = fields.Binary("Cover")
+    active = fields.Boolean("Activo?")
+    image = fields.Binary("Imagen de portada")
 
     # Relational Fields
-    publisher_id = fields.Many2one("res.partner", string="Publisher", index=True)
-    author_ids = fields.Many2many("res.partner", string="Authors")
-    # Book <-> Authors relation (using positional args)
-    # author_ids = fields.Many2many(
-    #     "res.partner",
-    #     "library_book_res_partner_rel",
-    #     "a_id",
-    #     "b_id",
-    #     "Authors",
-    # )
-    # Book <-> Authors relation (using keyword args)
-    # author_ids = fields.Many2many(
-    #     comodel_name="res.partner",
-    #     relation="library_book_res_partner_rel",
-    #     column1="a_id",
-    #     column2="b_id",
-    #     string="Authors")
+    publisher_id = fields.Many2one("res.partner", string="Editorial", index=True)
+    author_ids = fields.Many2many("res.partner", string="Autores")
 
     @api.depends("publisher_id.country_id")
     def _compute_publisher_country(self):
@@ -87,8 +72,7 @@ class Book(models.Model):
         return [("publisher_id.country_id", operator, value)]
 
     publisher_country_id = fields.Many2one(
-        "res.country", string="Publisher Country",
-        # related="publisher_id.country_id",
+        "res.country", string="País de la editorial",
         compute="_compute_publisher_country",
         inverse="_inverse_publisher_country",
         search="_search_publisher_country",
@@ -97,10 +81,10 @@ class Book(models.Model):
     _sql_constraints = [
         ("library_book_name_date_uq",
          "UNIQUE (name, date_published)",
-         "Book title and publication date must be unique."),
+         "El título y la fecha de publicación ya fueron ingresados."),
         ("library_book_check_date",
          "CHECK (date_published <= current_date)",
-         "Publication date must not be in the future."),
+         "La fecha de la publicación no puede ser en el futuro."),
     ]
 
     @api.constrains("isbn")
@@ -108,7 +92,7 @@ class Book(models.Model):
         for book in self:
             if book.isbn and not book._check_isbn():
                 raise ValidationError(
-                    "%s is an invalid ISBN" % book.isbn)
+                    "%s es un ISBN inválido" % book.isbn)
 
     def _check_isbn(self):
         self.ensure_one()
@@ -123,7 +107,7 @@ class Book(models.Model):
     def button_check_isbn(self):
         for book in self:
             if not book.isbn:
-                raise ValidationError("Please provide an ISBN for %s" % book.name)
+                raise ValidationError("Por favor ingresa el ISBN para el libro titulado %s" % book.name)
             if book.isbn and not book._check_isbn():
-                raise ValidationError("%s ISBN is invalid" % book.isbn)
+                raise ValidationError("%s El ISBN es inválido" % book.isbn)
         return True

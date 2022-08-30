@@ -18,5 +18,3 @@ class Member(models.Model):
     _sql_constraints = [
         ("card_number_unique", "UNIQUE(card_number)", "El número de socio debe ser único"),
     ]
-
-    

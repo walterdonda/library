@@ -19,7 +19,6 @@
         'views/member_view.xml',
         'views/templates.xml',
         'views/library_menu.xml',
-        'views/res_partner.xml',
         
     ],
     # only loaded in demonstration mode

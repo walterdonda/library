@@ -9,7 +9,7 @@
     'website': "http://www.yourcompany.com",
 
     # any module necessary for this one to work correctly
-    'depends': ['library_app','mail'],
+    'depends': ['base','library_app','mail'],
 
     # always loaded
     'data': [
@@ -19,6 +19,7 @@
         'views/member_view.xml',
         'views/templates.xml',
         'views/library_menu.xml',
+        'views/res_partner.xml',
         
     ],
     # only loaded in demonstration mode

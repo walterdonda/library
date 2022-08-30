@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_partner_form_inherit_library_member" model="ir.ui.view">
+        <field name="name">Agrego Miembro a res.partner</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+          
+          <field name="mobile" position="after">
+            <field name="member_id" widget="One2Many" />
+          </field>
+            
+        </field>
+    </record>
+
+</odoo>

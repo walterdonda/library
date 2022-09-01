@@ -7,6 +7,7 @@
       <field name="arch" type="xml">
         <field name="isbn" position="after">
           <field name="is_available" widget="boolean_toggle" />
+          <field name="delta_un_año_un_mes" />
         </field>
       </field>
     </record>

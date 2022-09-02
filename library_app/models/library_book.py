@@ -1,16 +1,16 @@
+from cgitb import html
 from odoo import api, fields, models
 from odoo.exceptions import ValidationError
 
 
 class Book(models.Model):
     """
-    Describes a Book catalogue.
+    Catálogo de libros con sus características.
     """
+
     _name = "library.book"
     _description = "Book"
-    # ch06:
     _order = "name, date_published desc"
-    _recname = "name"
     _table = "library_book"
     _log_access = True
     _auto = True
@@ -19,24 +19,24 @@ class Book(models.Model):
     name = fields.Char(
         "Título",
         default=None,
-        help="Tapa del libro.",
+        help="Título del libro.",
         readonly=False,
         required=True,
         index=True,
         copy=False,
-        groups="",
-        states={},
     )
     isbn = fields.Char("ISBN")
     book_type = fields.Selection(
-        [("paper", "Tapa blanda"),
-         ("hard", "Tapa dura"),
-         ("electronic", "Electrónico"),
-         ("other", "otro")],
+        [
+            ("paper", "Tapa blanda"),
+            ("hard", "Tapa dura"),
+            ("electronic", "Electrónico"),
+            ("other", "otro"),
+        ],
         "Tipo de libro",
     )
     notes = fields.Text("Nota interna")
-    descr = fields.Html("Descripción")
+    description = fields.Html("Descripción")
 
     # Numeric fields:
     copies = fields.Integer(default=1)
@@ -72,30 +72,34 @@ class Book(models.Model):
         return [("publisher_id.country_id", operator, value)]
 
     publisher_country_id = fields.Many2one(
-        "res.country", string="País de la editorial",
+        "res.country",
+        string="País de la editorial",
         compute="_compute_publisher_country",
         inverse="_inverse_publisher_country",
         search="_search_publisher_country",
     )
 
     _sql_constraints = [
-        ("library_book_name_date_uq",
-         "UNIQUE (name, date_published)",
-         "El título y la fecha de publicación ya fueron ingresados."),
-        ("library_book_check_date",
-         "CHECK (date_published <= current_date)",
-         "La fecha de la publicación no puede ser en el futuro."),
+        (
+            "library_book_name_date_uq",
+            "UNIQUE (name, date_published)",
+            "El título y la fecha de publicación ya fueron ingresados.",
+        ),
+        (
+            "library_book_check_date",
+            "CHECK (date_published <= current_date)",
+            "La fecha de la publicación no puede ser en el futuro.",
+        ),
     ]
 
     @api.constrains("isbn")
     def _constrain_isbn_valid(self):
         for book in self:
             if book.isbn and not book._check_isbn():
-                raise ValidationError(
-                    "%s es un ISBN inválido" % book.isbn)
+                raise ValidationError("%s es un ISBN inválido" % book.isbn)
 
     def _check_isbn(self):
-        self.ensure_one()
+        self.ensure_one()  # Esto requiere que valide sobre un solo registro y no hago un for
         digits = [int(x) for x in self.isbn if x.isdigit()]
         if len(digits) == 13:
             ponderations = [1, 3] * 6
@@ -107,7 +111,9 @@ class Book(models.Model):
     def button_check_isbn(self):
         for book in self:
             if not book.isbn:
-                raise ValidationError("Por favor ingresa el ISBN para el libro titulado %s" % book.name)
+                raise ValidationError(
+                    "Por favor ingresa el ISBN para el libro titulado %s" % book.name
+                )
             if book.isbn and not book._check_isbn():
                 raise ValidationError("%s El ISBN es inválido" % book.isbn)
         return True

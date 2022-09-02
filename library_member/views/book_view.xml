@@ -12,19 +12,6 @@
       </field>
     </record>
 
-    <record id="book_view_tree_inherit" model="ir.ui.view">
-      <field name="name">book.view.form.inherit</field>
-      <field name="model">library.book</field>
-      <field name="inherit_id" ref="library_app.book_view_tree"/>
-      <field name="arch" type="xml">
-        <field name="date_published" position="after">
-          <field name="internal_code"/>
-        </field>
-      </field>
-    </record>
-
-
-
     <record id="book_view_search_available" model="ir.ui.view">
       <field name="name">library.book.view.search.inherit</field>
       <field name="model">library.book</field>

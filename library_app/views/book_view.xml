@@ -1,60 +1,60 @@
 <odoo>
-    <!-- Vista formulario -->
-    <record id="view_form_book" model="ir.ui.view">
-      <field name="name">book.view.form</field>
-      <field name="model">library.book</field>
-      <field name="arch" type="xml">
-        <form string= 'Libro'>
-          <header>
-            <button name="button_check_isbn" string="Chequear ISBN" type="object" class="oe_highlight"/>
-          </header>
-          <sheet>
-            <group name="group_top">
-              <group name="group_left">
-                <field name="name"/>
-                <field name="author_ids" widget="many2many"/>
-                <field name="publisher_id"/>
-                <field name="date_published"/>
-              </group>
-              <group name="group_right">  
-                <field name="isbn"/>
-                <field name="active" widget="boolean_toggle"/>
-                <field name="price" widget='monetary'/>
-                <field name="image" widget='image'/>
-              </group>
+  <!-- Vista formulario -->
+  <record id="view_form_book" model="ir.ui.view">
+    <field name="name">book.view.form</field>
+    <field name="model">library.book</field>
+    <field name="arch" type="xml">
+      <form string= 'Libro'>
+        <header>
+          <button name="button_check_isbn" string="Chequear ISBN" type="object" class="oe_highlight"/>
+        </header>
+        <sheet>
+          <group name="group_top">
+            <group name="group_left">
+              <field name="name"/>
+              <field name="author_ids" widget="many2many"/>
+              <field name="publisher_id"/>
+              <field name="date_published"/>
             </group>
-          </sheet>
-        </form>  
-      </field>
-    </record>
-    <!-- Vista lista o tree --> 
-    <record id="book_view_tree" model="ir.ui.view">
-      <field name="name">book.view.tree</field>
-      <field name="model">library.book</field>
-      <field name="arch" type="xml">
-        <tree string="Lista de Libros">
-          <field name="name"/>
-          <field name="author_ids" widget="many2many_tags"/>
-          <field name="publisher_id"/>
-          <field name="date_published"/>
-        </tree>
-      </field>
-    </record>
-    <!-- Vista de búsqueda y filtros de registros -->
-    <record id="book_view_search" model="ir.ui.view">
-      <field name="name">book.view.search</field>
-      <field name="model">library.book</field>
-      <field name="arch" type="xml">
-        <search string="Busqueda">
-          <field name="name"/>
-          <field name="author_ids"/>
-          <field name="publisher_id"/>
-          <filter name="activos" string="Mostrar Activos" domain="[('active','=',True)]"/>
-          <filter name="inactivos" string="Mostrar Inactivos" domain="[('active','=',False)]"/>
-          <filter name="today" string="Publicados hoy" domain="[('date_published','&gt;=',context_today().strftime('%Y-%m-%d')),('date_published','&lt;=',(context_today()+datetime.timedelta(days=1)).strftime('%Y-%m-%d'))]"/>
-          <filter string="Publicado este mes" name="this_month" domain="[('date_published','&gt;=',context_today().strftime('%%Y-%%m-01')),('date_published','&lt;=',(context_today()+datetime.timedelta(weeks=4)).strftime('%Y-%m-01'))]"/>
-          <filter string="Publicados" name="published" domain="[('date_published','&gt;=',time.strftime('%%Y-01-01'))]" context="{'group_by': 'date_published'}" /> 
-        </search>
-      </field>
-    </record>
+            <group name="group_right">
+              <field name="isbn"/>
+              <field name="active" widget="boolean_toggle"/>
+              <field name="price" widget='monetary'/>
+              <field name="image" widget='image'/>
+            </group>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+  <!-- Vista lista o tree -->
+  <record id="book_view_tree" model="ir.ui.view">
+    <field name="name">book.view.tree</field>
+    <field name="model">library.book</field>
+    <field name="arch" type="xml">
+      <tree string="Lista de Libros">
+        <field name="name"/>
+        <field name="author_ids" widget="many2many_tags"/>
+        <field name="publisher_id"/>
+        <field name="date_published"/>
+      </tree>
+    </field>
+  </record>
+  <!-- Vista de búsqueda y filtros de registros -->
+  <record id="book_view_search" model="ir.ui.view">
+    <field name="name">book.view.search</field>
+    <field name="model">library.book</field>
+    <field name="arch" type="xml">
+      <search string="Busqueda">
+        <field name="name"/>
+        <field name="author_ids"/>
+        <field name="publisher_id"/>
+        <filter name="activos" string="Mostrar Activos" domain="[('active','=',True)]"/>
+        <filter name="inactivos" string="Mostrar Inactivos" domain="[('active','=',False)]"/>
+        <filter name="today" string="Today" domain="[('date_published','&gt;=', datetime.datetime.combine(context_today(), datetime.time(0,0,0))), ('date_published','&lt;=', datetime.datetime.combine(context_today(), datetime.time(23,59,59)))]" />
+        <filter string="Publicado últimos 30 días" name="this_month" domain="[('date_published','&gt;=',context_today().strftime('%%Y-%%m-01')),('date_published','&lt;=',(context_today()+datetime.timedelta(weeks=4)).strftime('%Y-%m-01'))]"/>
+        <filter string="Publicados" name="published" domain="[('date_published','&gt;=',time.strftime('%%Y-01-01'))]" context="{'group_by': 'date_published'}" />
+      </search>
+    </field>
+  </record>
 </odoo>

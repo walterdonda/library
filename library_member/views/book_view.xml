@@ -7,7 +7,6 @@
       <field name="arch" type="xml">
         <field name="isbn" position="after">
           <field name="is_available" widget="boolean_toggle" />
-          <field name="internal_code" widget="Percentage Pie"/>
         </field>
       </field>
     </record>
@@ -19,7 +18,7 @@
       <field name="arch" type="xml">
         <!-- Primero busco el search, me meto adentro y meto un valor con el nuevo filter -->
         <xpath expr="/search/filter[1]" position="after">
-          <filter name="is_available" string="Está disponible para retirar" domain="[('is_available', '=', 'True')]" />  
+          <filter name="is_available" string="Está disponible para retirar" domain="[('is_available', '=', 'True')]" />
         </xpath>
       </field>
     </record>

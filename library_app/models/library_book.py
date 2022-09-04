@@ -116,3 +116,8 @@ class Book(models.Model):
             if book.isbn and not book._check_isbn():
                 raise ValidationError("%s El ISBN es inválido" % book.isbn)
         return True
+
+    def map(self):
+        books = self.env["library.book"].search([])
+        books_mapped = books.mapped(lambda b: b)
+        print(books_mapped)

@@ -1,4 +1,3 @@
-from cgitb import html
 from odoo import api, fields, models
 from odoo.exceptions import ValidationError
 
@@ -52,7 +51,7 @@ class Book(models.Model):
     )
 
     # Other fields:
-    active = fields.Boolean("Activo?")
+    active = fields.Boolean("Activo?", default=True)
     image = fields.Binary("Imagen de portada")
 
     # Relational Fields

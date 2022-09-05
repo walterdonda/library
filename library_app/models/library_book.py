@@ -121,3 +121,15 @@ class Book(models.Model):
         books = self.env["library.book"].search([])
         books_mapped = books.mapped(lambda b: b)
         print(books_mapped)
+
+    def promedio_precio_por_editor(self):
+        books = self.search([])
+        books_grouped = books.read_group(
+            [("price", ">", "0")], ["price:avg"], ["publisher_id"]
+        )
+
+    def promedio_sql(self):
+        sql = "select AVG(book.price) FROM library_book as book GROUP BY book.publisher_id"
+        self.env.cr.execute(sql)
+        res = self.env.cr.fetchall()
+        print(res)

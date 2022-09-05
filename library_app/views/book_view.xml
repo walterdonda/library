@@ -6,7 +6,7 @@
     <field name="arch" type="xml">
       <form string= 'Libro'>
         <header>
-          <button name="button_check_isbn" string="Chequear ISBN" type="object" class="oe_highlight"/>
+          <button name="promedio_sql" string="Chequear ISBN" type="object" class="oe_highlight"/>
         </header>
         <sheet>
           <group name="group_top">

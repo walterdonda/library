@@ -40,7 +40,9 @@ class Book(models.Model):
     # Numeric fields:
     copies = fields.Integer(default=1)
     avg_rating = fields.Float("Rating promedio", (3, 2))
-    price = fields.Monetary("Precio de venta al público", "currency_id")
+    price = fields.Monetary(
+        string="Precio de venta al público", currency_field="currency_id"
+    )
     currency_id = fields.Many2one("res.currency")  # price helper
 
     # Date and time fields:

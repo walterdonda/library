@@ -133,3 +133,18 @@ class Book(models.Model):
         self.env.cr.execute(sql)
         res = self.env.cr.fetchall()
         print(res)
+
+
+# Agrego teléfono a las editoriales a la hora de buscar
+
+
+class PublisherExtended(models.Model):
+
+    _inherit = "res.partner"
+
+    def name_get(self):
+        result = []
+        for partner in self:
+            name = "%s %s" % (partner.name, partner.phone)
+            result.append((partner.id, name))
+        return result

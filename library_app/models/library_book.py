@@ -79,6 +79,8 @@ class Book(models.Model):
         inverse="_inverse_publisher_country",
         search="_search_publisher_country",
     )
+    
+    #Restricciones a nivel de base de datos
 
     _sql_constraints = [
         (
